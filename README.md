@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/made%20with-vue.js-green?logo=vue.js).
 
 ## Table of contents
-* [Goal](#goal-of-theproject)
+* [Goal](#goal-of-the-project)
 * [Creating components](#creating-components-with-typescript)
 * [DefineComponent method](#definecomponent-method)
 * [Overview of types](#overview-of-types)
