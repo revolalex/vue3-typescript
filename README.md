@@ -1,5 +1,8 @@
 # vue3-typescript
-![](https://img.shields.io/badge/made%20with-vue.js-green?logo=vue.js).
+![](https://img.shields.io/badge/made%20with-vue.js-green?logo=vue.js).<br/>
+![image](https://user-images.githubusercontent.com/56839789/109679059-86576380-7b7b-11eb-8b70-1956bbdc7a45.png)<br/>
+
+
 
 ## Table of contents
 * [Goal](#goal-of-the-project)
@@ -18,6 +21,8 @@
 * [Custom Types with Computed Properties](#Custom-types-with-computed-properties)
 * [Custom Types with Methods](#Custom-types-with-methods)
 * [Lean pratice](#learn-pratice)
+* [More](#more)
+
 
 
 
@@ -506,12 +511,7 @@ secondEvent(): EventItem {
 ```
 And with that, you know all you need to add custom types to your methods!
 
-If you’re looking for additional resources to explore on your own, be sure to check out:
 
-- The official Vue docs that now has a dedicated TypeScript section that will continue to grow as the ecosystem matures.
-https://v3.vuejs.org/guide/typescript-support.html#typescript-support
-- And of course, the official TypeScript docs site for an in-depth look at TypeScript
-https://www.typescriptlang.org/docs/
 
 ## Learn Pratice
 - Overview of types
@@ -530,6 +530,12 @@ https://www.typescriptlang.org/docs/
 - Custom types with methods
 
 
+## More
+If you’re looking for additional resources to explore on your own, be sure to check out:
 
+- The official Vue docs that now has a dedicated TypeScript section that will continue to grow as the ecosystem matures.<br/>
+https://v3.vuejs.org/guide/typescript-support.html#typescript-support
+- And of course, the official TypeScript docs site for an in-depth look at TypeScript<br/>
+https://www.typescriptlang.org/docs/
 
 
