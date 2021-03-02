@@ -15,7 +15,11 @@
 * [What is an interface?](#what-is-an-interface)
 * [What a type assertions?](#what-a-type-assertions)
 * [Props with Types](#props-with-types)
+* [Custom Types with Computed Properties](#Custom-types-with-computed-properties)
 * [Lean pratice](#learn-pratice)
+
+
+
 
 ## Goal of the project
 The goal of this project was to learn to work with typescript and vue3
@@ -135,6 +139,7 @@ As applications grow in size and complexity with unique requirements, it’s ine
 
 #### What is types
 In its simplest form, type allows you to define an alias that refers to a specific way that the data should be shaped. For example, here were faced with a problem where wanted to confine our buttonStyles variables to certain CSS classes based on a design system.
+
 ```js
 let buttonStyles: string = 'primary'
 ```
@@ -147,6 +152,7 @@ type buttonType = 'primary'
 ```
 
 In this starting example, we’ve declared a type called buttonType that contains that value 'primary'. And similar to standard type declaration, we can apply this type to our initial example:
+
 ```js 
 let buttonStyles: buttonType = 'primary'
 ```
@@ -159,7 +165,8 @@ let buttonStyles: buttonType = 'secondary'
 TypeScript would report an error, which is what we expect since buttonType can only be a value of 'primary' at this time. So what if we need multiple values?
 
 ### How to define multiple values?
-In the event that you need to allow a type to contain multiple values, this is where the union operator comes in. The union operator can be identified by a single pipe | and is most similar to what we’re familiar with in JavaScript as || or in other words, the “OR” operator.
+
+In the event that you need to allow a type to contain multiple values, this is where the union operator comes in. The union operator can be identified by a single pipe ```|``` and is most similar to what we’re familiar with in JavaScript as ```||``` or in other words, the “OR” operator.
 
 With this knowledge, let’s continue enhancing our buttonType example with the remaining valid button types.
 ```js 
@@ -176,6 +183,7 @@ const dangerBtnStyles: buttonType = 'danger' ✅
 ```
 
 ## What is an interface?
+
 When getting started with interface, the way I like to think about it is a way to define a type for an object.
 
 ```js
@@ -208,7 +216,10 @@ Well, with an interface, you can totally do this!
 
 #### How to define an interface?
 Just like a type, you declare an interface by prefixing the variable name with interface. So using our hero example from above, it would start out looking like this:
-```js interface Hero = { } ```
+
+```js 
+interface Hero = { } 
+```
 
 Once we have this structure in place, then it’s only a matter of defining our object types within the interface.
 
@@ -277,6 +288,7 @@ futureTodoItem.complete = false
 ```
 
 TypeScript by default, will infer that futureTodoItem is simply an empty object that should not have any properties in it and will report errors stating as such. But we know it should be a TodoItem type, so we can tell TypeScript this by using the as keyword to override the default behavior.
+
 ```js
 interface TodoItem {
   label: string
@@ -285,14 +297,14 @@ interface TodoItem {
 
 const futureTodoItem = {} as TodoItem
 
-futureTodoItem.label = 'Install VueDX extension'
+futureTodoItem.label = 'Learn Typescript with vue3'
 futureTodoItem.complete = false
 ```
+
 And just like that, everything works now!
 
 ## Props with Types
-Let's go, how to apply custom types to props. 
-But first we need to see:
+First we need to see:
 
 #### TypeScript Generics
 ```js
@@ -306,9 +318,10 @@ function createList(item: number): number[] {
 
 const numberList = createList(123)
 ```
+
 With this, you get type safety, but the function is rather limiting isn’t it? And if we were to rename it properly, we’d probably want to call it addNumberToNumberList, but this wouldn’t be very reusable then. So the question is, how would we make this more reusable?
 
-In TypeScript, this is solved with the concept of “Generics.” At a high level, they allow you to define a dynamic type that is reused in the function later on. The key marker that generics are being used is when a function is appended with the <> bracket, which allows you to pass in a type rather than a JavaScript value that is passed in parentheses instead. So the code we had before would become:
+In TypeScript, this is solved with the concept of “Generics.” At a high level, they allow you to define a dynamic type that is reused in the function later on. The key marker that generics are being used is when a function is appended with the ```<>``` bracket, which allows you to pass in a type rather than a JavaScript value that is passed in parentheses instead. So the code we had before would become:
 
 ```js
 function createList<CustomType>(item: CustomType): CustomType[] {
@@ -322,8 +335,9 @@ function createList<CustomType>(item: CustomType): CustomType[] {
 const numberList = createList<number>(123)
 ```
 
-You have to know it is a convention in the TypeScript community to use single letter variables — starting with T — when defining custom types in generics.
+You have to know it is a convention in the TypeScript community to use single letter variables — starting with ```T``` — when defining custom types in generics.
 So out in other code bases, the same code above would look like this:
+
 ```js
 function createList<T>(item: T): T[] {
     const newList: T[] = []
@@ -337,11 +351,133 @@ const stringList = createList<T>(123)
 ```
 
 #### PropType Helper Method
-In Vue 3, when we want to apply custom types to props, we need the built-in helper method called PropTypes. You can use it by importing it from Vue directly.
+
+In Vue 3, when we want to apply custom types to props, we need the built-in helper method called ```PropTypes```. You can use it by importing it from Vue directly.
+
 ```js
 import { PropTypes } from 'vue'
 ```
 
+## Custom Types with Computed Properties
+Let’s start with computed properties.
+
+EventItem:
+```js
+
+export interface EventItem {
+  id: number
+  category: string
+  title: string
+  description: string
+  location: string
+  date: string
+  time: string
+  organizer: string
+}
+```
+
+
+Here we have a standard single file component where the language in the script block is marked for TypeScript.
+
+```js
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { EventItem } from '../types'
+
+export default defineComponent({
+  data() {
+    return {
+      events: []
+    }
+  },
+  methods: {
+    secondEvent() {
+      return this.events[1]
+    }
+  }
+})
+</script>
+```
+
+Using what we learned in Data with Custom Types, we know that we can type our events array by using the keyword as to tell TypeScript that it is an array of EventItems.
+
+```js
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { EventItem } from '../types'
+
+export default defineComponent({
+  data() {
+    return {
+      events: [] as EventItem
+    }
+  },
+  methods: {
+    secondEvent(): EventItem {
+      return this.events[1]
+    }
+  }
+})
+</script>
+```
+But what about our computed property?
+
+When it comes to computed properties, the key thing to remember is that you want to focus on what the computed property is returning. In other words, using our example, we need to define what type that secondEvent will end up returning.
+
+To do this, we use the syntax of the : and the following it with the custom type the function should return:
+
+```js
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { EventItem } from '../types'
+
+export default defineComponent({
+  data() {
+    return {
+      events: [] as EventItem
+    }
+  },
+  methods: {
+    secondEvent(): EventItem {
+      return this.events[1]
+    }
+  }
+})
+</script>
+```
+
+Believe it or not, just like that, you’ve successfully added a custom type to your computed property!
+
+## Custom Types with Methods
+
+Now let’s shift gears to how we add custom types to methods. Let’s start again with our component with a small change where we have an addEvent method.
+
+```js
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { EventItem } from '../types'
+
+export default defineComponent({
+  data() {
+    return {
+      events: [] as EventItem[]
+    }
+  },
+  methods: {
+    addEvent(newEvent) {
+      this.events.push(newEvent)
+    }
+  }
+})
+</script>
+```
+
+In our addEvent function, we can see that it takes in a parameter of ```newEvent``` and adds it to the events data that we’re tracking inside of ```data()```.
+
+When it comes to adding custom types to methods, there are two key things to keep in mind:
+
+Do we need to add types to the parameters being passed into the method?
+Do we need to add types to whatever is being returned by the method?
 
 ## Learn Pratice
 - Overview of types
