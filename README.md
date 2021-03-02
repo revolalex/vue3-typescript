@@ -167,10 +167,10 @@ type buttonType = 'primary' | 'secondary' | 'success' | 'danger'
 And now when we apply it, we can ensure that all buttonType variables have the correct value!
 ```js
 // TypeScript will report an error because this doesn't exist in the type!
-const errorBtnStyles: buttonType = 'error'
+const errorBtnStyles: buttonType = 'error' ❌
 
 // This variable is type safe!
-const dangerBtnStyles: buttonType = 'danger'
+const dangerBtnStyles: buttonType = 'danger' ✅
 ```
 
 ## What is an interface?
