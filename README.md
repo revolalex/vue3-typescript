@@ -5,7 +5,7 @@
 
 
 ## Table of contents
-* [Goal](#goal-of-the-project)
+* [Goal](#goal)
 * [Creating components](#creating-components-with-typescript)
 * [DefineComponent method](#definecomponent-method)
 * [Overview of types](#overview-of-types)
@@ -27,8 +27,8 @@
 
 
 
-## Goal of the project
-The goal of this project was to learn to work with typescript and vue3
+## Goal 
+The goal of this readme was to explain what i learn studying Typescript and Vue3
 
 ## Creating Components with TypeScript
 One of the most important changes that have happened in our Single File Components (SFC) is that our block now contains a attribute, which stands for language. This is more commonly seen on the block where we declare the use of pre-processors such as Sass.
