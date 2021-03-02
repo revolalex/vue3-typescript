@@ -16,6 +16,7 @@
 * [What a type assertions?](#what-a-type-assertions)
 * [Props with Types](#props-with-types)
 * [Custom Types with Computed Properties](#Custom-types-with-computed-properties)
+* [Custom Types with Methods](#Custom-types-with-methods)
 * [Lean pratice](#learn-pratice)
 
 
@@ -319,7 +320,7 @@ function createList(item: number): number[] {
 const numberList = createList(123)
 ```
 
-With this, you get type safety, but the function is rather limiting isn’t it? And if we were to rename it properly, we’d probably want to call it addNumberToNumberList, but this wouldn’t be very reusable then. So the question is, how would we make this more reusable?
+With this, you get type safety, but the function is rather limiting isn’t it? And if we were to rename it properly, we’d probably want to call it ```addNumberToNumberList```, but this wouldn’t be very reusable then. So the question is, how would we make this more reusable?
 
 In TypeScript, this is solved with the concept of “Generics.” At a high level, they allow you to define a dynamic type that is reused in the function later on. The key marker that generics are being used is when a function is appended with the ```<>``` bracket, which allows you to pass in a type rather than a JavaScript value that is passed in parentheses instead. So the code we had before would become:
 
@@ -399,7 +400,7 @@ export default defineComponent({
 </script>
 ```
 
-Using what we learned in Data with Custom Types, we know that we can type our events array by using the keyword as to tell TypeScript that it is an array of EventItems.
+Using what we learned in Data with Custom Types, we know that we can type our events array by using the keyword ```as``` to tell TypeScript that it is an array of ```EventItem```s.
 
 ```js
 <script lang="ts">
@@ -422,9 +423,9 @@ export default defineComponent({
 ```
 But what about our computed property?
 
-When it comes to computed properties, the key thing to remember is that you want to focus on what the computed property is returning. In other words, using our example, we need to define what type that secondEvent will end up returning.
+When it comes to computed properties, the key thing to remember is that you want to focus on what the computed property is returning. In other words, using our example, we need to define what type that ```secondEvent``` will end up returning.
 
-To do this, we use the syntax of the : and the following it with the custom type the function should return:
+To do this, we use the syntax of the ```:``` and the following it with the custom type the function should return:
 
 ```js
 <script lang="ts">
@@ -450,7 +451,7 @@ Believe it or not, just like that, you’ve successfully added a custom type to 
 
 ## Custom Types with Methods
 
-Now let’s shift gears to how we add custom types to methods. Let’s start again with our component with a small change where we have an addEvent method.
+Now let’s shift gears to how we add custom types to methods. Let’s start again with our component with a small change where we have an ```addEvent``` method.
 
 ```js
 <script lang="ts">
@@ -472,12 +473,45 @@ export default defineComponent({
 </script>
 ```
 
-In our addEvent function, we can see that it takes in a parameter of ```newEvent``` and adds it to the events data that we’re tracking inside of ```data()```.
+In our ```addEvent``` function, we can see that it takes in a parameter of ```newEvent``` and adds it to the events data that we’re tracking inside of ```data()```.
 
 When it comes to adding custom types to methods, there are two key things to keep in mind:
 
-Do we need to add types to the parameters being passed into the method?
-Do we need to add types to whatever is being returned by the method?
+- Do we need to add types to the parameters being passed into the method?
+- Do we need to add types to whatever is being returned by the method?
+
+#### Adding Custom Types to the Parameter of a Method
+In this particular function, our focus is on add a custom type to the parameter ```newEvent```, which should a type of ```EventItem```. And we can accomplish this by using the ```:``` syntax:
+
+```js
+addEvent(newEvent: EventItem) {
+  this.events.push(newEvent)
+}
+```
+
+#### Adding Custom Types to the Return Value of a Method
+For this scenario, let’s change up the method to fetching the second event:
+
+```js
+secondEvent() {
+  return this.events[1]
+}
+```
+
+If you’re thinking this looks similar to the computed properties example we saw earlier, you’d be correct! The solution to typing your method’s return value is exactly the same.
+```js
+secondEvent(): EventItem {
+  return this.events[1]
+}
+```
+And with that, you know all you need to add custom types to your methods!
+
+If you’re looking for additional resources to explore on your own, be sure to check out:
+
+- The official Vue docs that now has a dedicated TypeScript section that will continue to grow as the ecosystem matures.
+https://v3.vuejs.org/guide/typescript-support.html#typescript-support
+- And of course, the official TypeScript docs site for an in-depth look at TypeScript
+https://www.typescriptlang.org/docs/
 
 ## Learn Pratice
 - Overview of types
@@ -492,6 +526,8 @@ Do we need to add types to whatever is being returned by the method?
 - What generics are 
 - PropType helper method
 - Defining custom types on props
+- Custom types with computed properties
+- Custom types with methods
 
 
 
