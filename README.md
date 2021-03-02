@@ -13,6 +13,7 @@
 * [Object](#object)
 * [Defining custom types](#defining-custom-types)
 * [What is an interface?](#what-is-an-interface)
+* [What a type assertions?](#what-a-type-assertions)
 * [Lean pratice](#learn-pratice)
 
 ## Goal of the project
@@ -258,6 +259,37 @@ And just like that, we’ve now combined our interface and type together!
 
 **My recommendation for your initial mental model is to use interface for objects, and use type for everything else.**
 
+## What are type assertions?
+At its core definition, type assertions allow you to override the inferred type by the editor. In other words, it is a way for you to tell the compiler that you know more about the type than it does.
+
+For example, if we have a type called TodoItem and an empty object:
+```js
+interface TodoItem {
+  label: string
+  complete: boolean
+}
+
+const futureTodoItem = {}
+
+futureTodoItem.label = 'Install VueDX extension'
+futureTodoItem.complete = false
+```
+
+TypeScript by default, will infer that futureTodoItem is simply an empty object that should not have any properties in it and will report errors stating as such. But we know it should be a TodoItem type, so we can tell TypeScript this by using the as keyword to override the default behavior.
+```js
+interface TodoItem {
+  label: string
+  complete: boolean
+}
+
+const futureTodoItem = {} as TodoItem
+
+futureTodoItem.label = 'Install VueDX extension'
+futureTodoItem.complete = false
+```
+And just like that, everything works now!
+
+
 ## Learn Pratice
 - Overview of types
 - How to add type to variable
@@ -266,6 +298,8 @@ And just like that, we’ve now combined our interface and type together!
 - What is an interface
 - What is a type
 - what is union opérators
+- what type assertions are
+- Use the new 'as' keyword in order to define custom types
 
 
 
