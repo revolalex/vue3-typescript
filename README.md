@@ -1,5 +1,6 @@
 # vue3-typescript
 ![](https://img.shields.io/badge/made%20with-vue.js-green?logo=vue.js).<br/>
+![](https://img.shields.io/badge/made%20with-TypeScript-blue?logo=TypeScript).<br/>
 ![image](https://user-images.githubusercontent.com/56839789/109679059-86576380-7b7b-11eb-8b70-1956bbdc7a45.png)<br/>
 
 
