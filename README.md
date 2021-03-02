@@ -14,6 +14,7 @@
 * [Defining custom types](#defining-custom-types)
 * [What is an interface?](#what-is-an-interface)
 * [What a type assertions?](#what-a-type-assertions)
+* [Props with Types](#props-with-types)
 * [Lean pratice](#learn-pratice)
 
 ## Goal of the project
@@ -289,6 +290,58 @@ futureTodoItem.complete = false
 ```
 And just like that, everything works now!
 
+## Props with Types
+Let's go, how to apply custom types to props. 
+But first we need to see:
+
+#### TypeScript Generics
+```js
+function createList(item: number): number[] {
+    const newList: number[] = []
+  
+    newList.push(item)
+  
+    return newList
+}
+
+const numberList = createList(123)
+```
+With this, you get type safety, but the function is rather limiting isn’t it? And if we were to rename it properly, we’d probably want to call it addNumberToNumberList, but this wouldn’t be very reusable then. So the question is, how would we make this more reusable?
+
+In TypeScript, this is solved with the concept of “Generics.” At a high level, they allow you to define a dynamic type that is reused in the function later on. The key marker that generics are being used is when a function is appended with the <> bracket, which allows you to pass in a type rather than a JavaScript value that is passed in parentheses instead. So the code we had before would become:
+
+```js
+function createList<CustomType>(item: CustomType): CustomType[] {
+    const newList: CustomType[] = []
+  
+    newList.push(item)
+  
+    return newList
+}
+
+const numberList = createList<number>(123)
+```
+
+You have to know it is a convention in the TypeScript community to use single letter variables — starting with T — when defining custom types in generics.
+So out in other code bases, the same code above would look like this:
+```js
+function createList<T>(item: T): T[] {
+    const newList: T[] = []
+  
+    newList.push(item)
+  
+    return newList
+}
+
+const stringList = createList<T>(123)
+```
+
+#### PropType Helper Method
+In Vue 3, when we want to apply custom types to props, we need the built-in helper method called PropTypes. You can use it by importing it from Vue directly.
+```js
+import { PropTypes } from 'vue'
+```
+
 
 ## Learn Pratice
 - Overview of types
@@ -300,6 +353,9 @@ And just like that, everything works now!
 - what is union opérators
 - what type assertions are
 - Use the new 'as' keyword in order to define custom types
+- What generics are 
+- PropType helper method
+- Defining custom types on props
 
 
 
