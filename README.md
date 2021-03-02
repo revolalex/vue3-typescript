@@ -145,13 +145,13 @@ type buttonType = 'primary'
 ```
 
 In this starting example, we’ve declared a type called buttonType that contains that value 'primary'. And similar to standard type declaration, we can apply this type to our initial example:
-```
-js let buttonStyles: buttonType = 'primary'
+```js 
+let buttonStyles: buttonType = 'primary'
 ```
 
 As it stands, our buttonStyles is a valid variable because it matches our defined type. At this time, if someone tried to switch the value of buttonStyles to:
-```
-js let buttonStyles: buttonType = 'secondary'
+```js
+let buttonStyles: buttonType = 'secondary'
 ```
 
 TypeScript would report an error, which is what we expect since buttonType can only be a value of 'primary' at this time. So what if we need multiple values?
