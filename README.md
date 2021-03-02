@@ -11,6 +11,9 @@
 * [Array](#arrays)
 * [Function](#function)
 * [Object](#object)
+* [Defining custom types](#defining-custom-types)
+* [What is an interface?](#what-is-an-interface)
+* [Lean pratice](#learn-pratice)
 
 ## Goal of the project
 The goal of this project was to learn to work with typescript and vue3
@@ -125,7 +128,136 @@ let person: {
 }
 ```
 
+## Defining Custom Types
+As applications grow in size and complexity with unique requirements, it’s inevitable that there will be a need for custom types. 
 
+#### What is types
+In its simplest form, type allows you to define an alias that refers to a specific way that the data should be shaped. For example, here were faced with a problem where wanted to confine our buttonStyles variables to certain CSS classes based on a design system.
+```js
+let buttonStyles: string = 'primary'
+```
+
+#### How to use type ?
+Similar to declaring a variable, you use type as a declaration of the variable type.
+
+```js
+type buttonType = 'primary'
+```
+
+In this starting example, we’ve declared a type called buttonType that contains that value 'primary'. And similar to standard type declaration, we can apply this type to our initial example:
+```
+js let buttonStyles: buttonType = 'primary'
+```
+
+As it stands, our buttonStyles is a valid variable because it matches our defined type. At this time, if someone tried to switch the value of buttonStyles to:
+```
+js let buttonStyles: buttonType = 'secondary'
+```
+
+TypeScript would report an error, which is what we expect since buttonType can only be a value of 'primary' at this time. So what if we need multiple values?
+
+### How to define multiple values?
+In the event that you need to allow a type to contain multiple values, this is where the union operator comes in. The union operator can be identified by a single pipe | and is most similar to what we’re familiar with in JavaScript as || or in other words, the “OR” operator.
+
+With this knowledge, let’s continue enhancing our buttonType example with the remaining valid button types.
+```js 
+type buttonType = 'primary' | 'secondary' | 'success' | 'danger'
+```
+
+And now when we apply it, we can ensure that all buttonType variables have the correct value!
+```js
+// TypeScript will report an error because this doesn't exist in the type!
+const errorBtnStyles: buttonType = 'error'
+
+// This variable is type safe!
+const dangerBtnStyles: buttonType = 'danger'
+```
+
+## What is an interface?
+When getting started with interface, the way I like to think about it is a way to define a type for an object.
+
+```js
+let person: {
+	name: string;
+	age: number;
+	activeAvenger: boolean;
+	powers: string[];
+} = {
+	name: 'Peter Parker',
+	age: 20,
+	activeAvenger: true,
+	powers: ['wall-crawl', 'spider-sense']
+}
+```
+
+As we can see here, even though the data isn’t too complicated, it’s already fairly verbose and adds clutter to our code. Wouldn’t it be nice if it could look something like this instead?
+
+
+```js
+let person: Hero = {
+	name: 'Peter Parker',
+	age: 20,
+	activeAvenger: true,
+	powers: ['wall-crawl', 'spider-sense']
+}
+```
+Well, with an interface, you can totally do this!
+
+
+#### How to define an interface?
+Just like a type, you declare an interface by prefixing the variable name with interface. So using our hero example from above, it would start out looking like this:
+```js interface Hero = { } ```
+
+Once we have this structure in place, then it’s only a matter of defining our object types within the interface.
+
+```js
+interface Hero {
+	name: string;
+	age: number;
+	activeAvenger: boolean;
+	powers: string[];
+}
+```
+And just like that, we can now define variables that will be checked against the type Hero!
+
+
+#### Can you use type in an interface?
+Let’s say we want to enhance our Hero interface by defining what comic-book universe they live in. Well, without the use of type, it might look like this:
+
+```js
+interface Hero {
+	name: string;
+	age: number;
+	activeAvenger: boolean;
+	powers: string[];
+	universe: string;
+}
+```
+
+But like most applications, this isn’t useful given we want to restrict the universe property to only contain Marvel or DC as a value. Well, it looks like it’s time to call upon our power of type!
+
+```js
+type ComicUniverse = 'Marvel' | 'DC'
+
+interface Hero {
+	name: string;
+	age: number;
+	activeAvenger: boolean;
+	powers: string[];
+	universe: ComicUniverse;
+}
+```
+And just like that, we’ve now combined our interface and type together!
+
+My recommendation for your initial mental model is to use interface for objects, and use type for everything else.
+
+## Learn Pratice
+- Overviex of types
+- How to add type to variable
+- Limitation of predefined types
+- How to define custom types
+- Use the type and interface type
+- Union opérators
 
 
 
