@@ -256,15 +256,16 @@ let person: Hero = {
 ```
 And just like that, we’ve now combined our interface and type together!
 
-My recommendation for your initial mental model is to use interface for objects, and use type for everything else.
+**My recommendation for your initial mental model is to use interface for objects, and use type for everything else.**
 
 ## Learn Pratice
-- Overviex of types
+- Overview of types
 - How to add type to variable
 - Limitation of predefined types
 - How to define custom types
-- Use the type and interface type
-- Union opérators
+- What is an interface
+- What is a type
+- what is union opérators
 
 
 
