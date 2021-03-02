@@ -8,11 +8,9 @@
 * [Overview of types](#overview-of-types)
 * [New type from typescript](#new-types-from-typescript)
 * [How to apply a type to a variable](#how-to-apply-a-type-to-a-variable)
-* [Array](#array)
+* [Array](#arrays)
 * [Function](#function)
 * [Object](#object)
-* [Screenshots](#screenshots)
-* [Contact](#contact)
 
 ## Goal of the project
 The goal of this project was to learn to work with typescript and vue3
