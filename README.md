@@ -246,6 +246,13 @@ interface Hero {
 	powers: string[];
 	universe: ComicUniverse;
 }
+let person: Hero = {
+	name: 'Peter Parker',
+	age: 20,
+	activeAvenger: true,
+	powers: ['wall-crawl', 'spider-sense']
+	universe: 'Marvel'
+}
 ```
 And just like that, we’ve now combined our interface and type together!
 
