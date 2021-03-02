@@ -250,7 +250,7 @@ let person: Hero = {
 	name: 'Peter Parker',
 	age: 20,
 	activeAvenger: true,
-	powers: ['wall-crawl', 'spider-sense']
+	powers: ['wall-crawl', 'spider-sense'],
 	universe: 'Marvel'
 }
 ```
