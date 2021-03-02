@@ -1,4 +1,18 @@
-# vue3typescript
+# vue3-typescript
+![](https://img.shields.io/badge/made%20with-vue.js-green?logo=vue.js).
+
+## Table of contents
+* [Goal](#goal-of-theproject)
+* [Creating components](#creating-components-with-typescript)
+* [DefineComponent method](#definecomponent-method)
+* [Overview of types](#overview-of-types)
+* [New type from typescript](#new-types-from-typescript)
+* [How to apply a type to a variable](#how-to-apply-a-type-to-a-variable)
+* [Array](#array)
+* [Function](#function)
+* [Object](#object)
+* [Screenshots](#screenshots)
+* [Contact](#contact)
 
 ## Goal of the project
 The goal of this project was to learn to work with typescript and vue3
