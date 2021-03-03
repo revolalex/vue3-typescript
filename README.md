@@ -544,9 +544,10 @@ https://www.typescriptlang.org/docs/
 
 
 
-## Contact	
+## Contact
 - [![LinkedIn][linkedin-shield]][linkedin-url] 	
-- revolalex@gmail.com
+
+
 
 
 
