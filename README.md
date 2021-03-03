@@ -31,6 +31,7 @@
 ## Goal 
 The goal of this readme was to explain what i learn studying Typescript and Vue3
 
+
 ## Creating Components with TypeScript
 One of the most important changes that have happened in our Single File Components (SFC) is that our block now contains a attribute, which stands for language. This is more commonly seen on the block where we declare the use of pre-processors such as Sass.
 
@@ -538,5 +539,23 @@ If you’re looking for additional resources to explore on your own, be sure to 
 https://v3.vuejs.org/guide/typescript-support.html#typescript-support
 - And of course, the official TypeScript docs site for an in-depth look at TypeScript<br/>
 https://www.typescriptlang.org/docs/
+<br/>
+<sub>Ressource: https://www.vuemastery.com/courses/vue3-typescript/why-vue-&-typescript/</sup>
+
+
+
+## Contact	
+- [![LinkedIn][linkedin-shield]][linkedin-url] 	
+- revolalex@gmail.com
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/alexandre-rodrigueza/
 
 
